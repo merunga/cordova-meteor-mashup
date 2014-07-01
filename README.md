@@ -45,8 +45,8 @@ There are 2 main grunt tasks:
 
 <script type="text/javascript" src="js/meteor-bundled-js-file.js"></script>
 <script type="text/javascript">
-  Meteor.disconnect(); \\ to stop trying to reach the server
-  UI.body.INSTANTIATED = true; \\ to "trick" meteor not to inject the main template in the body
+  Meteor.disconnect(); // stop trying to reach the server
+  UI.body.INSTANTIATED = true; // "trick" meteor not to inject the main template in the body
 
   if (typeof Package === 'undefined' ||
       ! Package.webapp ||
