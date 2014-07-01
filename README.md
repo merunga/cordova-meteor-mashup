@@ -62,9 +62,19 @@ There are 2 main grunt tasks:
 </script>
 ```
 
-#### Seeing it
-Now, to see the result you need to start a Firefox OS simulator, an hopefully you'll have somethind like this:
+#### See it in Action
+Now, to see the result you need to start the [Firefox App Manager](https://developer.mozilla.org/en-US/Firefox_OS/Using_the_App_Manager).
 
+![](/docs/screenshot1.jpg)
+
+1. Open `about:app-manager` in firefox.
+2. Add the app to the manager. Point to the `<cordova-folder>/platforms/firefoxos/www/` directory. There's a `manifest.webapp` file inside.
+3. Your app is loaded.
+4. Start the simulator.
+5. Once the similator is up, click to start debugging your app.
+
+##### The result
+![](/docs/screenshot2.jpg)
 
 #### Configuration
 
