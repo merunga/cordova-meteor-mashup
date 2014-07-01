@@ -90,3 +90,7 @@ Inside the grunt file you'll find a `conf` object, with the following properties
 - `folders.temp`: The temp folder for `meteor bundle`.
 - `folders.cordovaProject`: The folder to hold the cordova project. Default: `cordova`.
 - `folders.meteorProject`: The folder to hold the meteor project. Default: `meteor`.
+
+#### License
+MIT
+
