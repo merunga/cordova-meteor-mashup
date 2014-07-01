@@ -10,7 +10,7 @@ meteor apps. I used them to both insert these meteor apps in cordova and
 jekyll projects. This repository only has the phonegap part, if someone is
 interested, I can add the jekyll one._
 
-_This haven't been tested neyond my use case, and isn't reliable!_
+_This haven't been tested beyond my use case, so it isn't reliable!_
 
 
 #### Getting started
@@ -22,10 +22,10 @@ globally installed:
 ```
 $ curl https://install.meteor.com/ | sh
 $ npm install -g cordova
-$ npm install -g grunt-cli
+$ npm install -g grunt-cline
 ```
 
-And install dependencies
+And install dependencies:
 ```
 npm install
 ```
@@ -37,6 +37,7 @@ There are 2 main grunt tasks:
   - creates meteor project
   - creates cordova project
   - add Firefox OS platform to cordova.
+  - path the meteor `package` file.
 - `grunt try`: deploys the cordova app and injects all the necessary styles and scripts:
   - bundle meteor app to temp directory
   - copy assets from bundled directory into cordova folders
