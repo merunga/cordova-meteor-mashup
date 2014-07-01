@@ -16,8 +16,8 @@ var conf = {
   },
   folders: {
     temp: 'tmp',
-    cordovaProject: 'cordova1',
-    meteorProject: 'meteor2'
+    cordovaProject: 'cordova',
+    meteorProject: 'meteor'
   }
 };
 
@@ -48,16 +48,6 @@ module.exports = function(grunt) {
         ].join(' && ')
       }
     },
-    waitport: {
-      prod: {
-        options: {
-          server: ["exec:meteorStartProd"],
-          stdioServer: "inherit",
-          port: "<%= meteor.prodPort %>",
-          other: ["copyMeteorAssets","exec:cordovaBuild"]
-        }
-      }
-    },
     copy: {
       meteorPublicAssets: {
         expand: true,
@@ -84,7 +74,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks("grunt-wait-port");
 
   grunt.config.set('app.name', conf.app.name);
   grunt.config.set('meteor.prodPort', conf.meteor.prodPort);
