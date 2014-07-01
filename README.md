@@ -1,15 +1,15 @@
-# Cordova and Meteor mashup using grunt
+### Cordova and Meteor mashup using grunt
 
 This is a set of ad-hoc grunt tasks that lets you insert a meteor app inside
 a apache cordova one.
 
-## * NOTICE:*
-* This experiment is just a bunch of grunt task I use to bundle client-only
+#### _NOTICE:_
+_This experiment is just a bunch of grunt task I use to bundle client-only
 meteor apps. I used them to both insert these meteor apps in cordova and
 jekyll projects. This repository only has the phonegap part, if someone is
-interested, I can add the jekyll one.*
+interested, I can add the jekyll one._
 
-* This haven't been tested in an online context! *
+_This haven't been tested in an online context!_
 
 To start using this you need, [`meteor`](https://www.meteor.com/),
 [`cordova`](http://cordova.apache.org/) and [`grunt`](http://gruntjs.com/)
@@ -32,7 +32,7 @@ There are 2 main grunt tasks:
   - `cordova prepare`
   - patch `platforms/firefoxos/www/index.html` file with the following content:
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="css/meteor-bundled-css-file.css">
 <script type="text/javascript">
   __meteor_runtime_config__ = {
@@ -61,7 +61,12 @@ There are 2 main grunt tasks:
   });
 </script>
 ```
-## Configuration
+
+#### Seeing it
+Now, to see the result you need to start a Firefox OS simulator, an hopefully you'll have somethind like this:
+
+
+#### Configuration
 
 Inside the grunt file you'll find a `conf` object, with the following properties:
 
