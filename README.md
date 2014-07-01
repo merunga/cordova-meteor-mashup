@@ -81,7 +81,7 @@ Now, to see the result you need to start the [Firefox App Manager](https://devel
 2. Add the app to the manager. Point to the `<cordova-folder>/platforms/firefoxos/www/` directory. There's a `manifest.webapp` file inside.
 3. Your app is loaded.
 4. Start the simulator.
-5. Once the similator is up, click to start debugging your app.
+5. Once the similator is up, click `DEBUG` to start debugging your app.
 
 ##### The result
 ![](/docs/screenshot2.jpg)
