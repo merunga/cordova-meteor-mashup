@@ -11,7 +11,10 @@ interested, I can add the jekyll one._
 
 _This haven't been tested in an online context!_
 
-To start using this you need, [`meteor`](https://www.meteor.com/),
+
+#### Getting started
+
+To start using this, you need [`meteor`](https://www.meteor.com/),
 [`cordova`](http://cordova.apache.org/) and [`grunt`](http://gruntjs.com/)
 globally installed:
 
@@ -20,6 +23,13 @@ $ curl https://install.meteor.com/ | sh
 $ npm install -g cordova
 $ npm install -g grunt-cli
 ```
+
+And install dependencies
+```
+npm install
+```
+
+#### Tasks
 
 There are 2 main grunt tasks:
 - `grunt init`: creates all the folder structure:
