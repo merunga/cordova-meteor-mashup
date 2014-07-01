@@ -101,6 +101,12 @@ Inside the grunt file you'll find a `conf` object, with the following properties
 - `folders.cordovaProject`: The folder to hold the cordova project. Default: `cordova`.
 - `folders.meteorProject`: The folder to hold the meteor project. Default: `meteor`.
 
+#### Notes
+I've used Firefox OS because it's faster and easier to debug. If you want to target other platforms add them to
+the [`init` task](https://github.com/merunga/cordova-meteor-mashup/blob/master/Gruntfile.js#L35), and
+add the [platform `index.html` file](https://github.com/merunga/cordova-meteor-mashup/blob/master/Gruntfile.js#L35)
+to the list of files to be patched.
+
 #### License
 MIT
 
