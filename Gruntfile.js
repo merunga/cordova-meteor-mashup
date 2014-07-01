@@ -121,59 +121,64 @@ module.exports = function(grunt) {
 
   grunt.registerTask('patchCordovaIndex', function() {
     var meteor = conf.meteor;
+    var filesToPath = [
+      'platforms/firefoxos/www/index.html'
+    ];
 
-    var fileToPatch = path.join(conf.folders.cordovaProject, 'platforms/firefoxos/www/index.html');
-    var indexSrcCode = grunt.file.read(fileToPatch);
-    var $indexHtml = $.load(indexSrcCode);
+    filesToPath.forEach( function (file) {
+      var fileToPatch = path.join(conf.folders.cordovaProject, file);
+      var indexSrcCode = grunt.file.read(fileToPatch);
+      var $indexHtml = $.load(indexSrcCode);
 
-    var meteorBundledClientPath = path.join(conf.folders.temp, '/programs/client/');
+      var meteorBundledClientPath = path.join(conf.folders.temp, '/programs/client/');
 
-    function getAssetName(extGlob) {
-      var globPath = path.join(meteorBundledClientPath,extGlob);
-      var filePath = grunt.file.expand(globPath);
+      function getAssetName(extGlob) {
+        var globPath = path.join(meteorBundledClientPath,extGlob);
+        var filePath = grunt.file.expand(globPath);
 
-      return path.basename(filePath);
-    }
+        return path.basename(filePath);
+      }
 
-    var jsFileName = getAssetName('*.js');
-    var cssFileName = getAssetName('*.css');
+      var jsFileName = getAssetName('*.js');
+      var cssFileName = getAssetName('*.css');
 
-    var $patch =$([
-      "<link rel='stylesheet' type='text/css' href='css/"+cssFileName+"' />",
-      "<script type='text/javascript'>",
-      "  __meteor_runtime_config__ = {",
-      "    'meteorRelease':'0.8.2',",
-      "    'ROOT_URL':'"+meteor.rootUrl+"',",
-      "    'ROOT_URL_PATH_PREFIX':'"+meteor.rootUrlPathPrefix+"',",
-      "    'DDP_DEFAULT_CONNECTION_URL':'"+meteor.ddpDefaultConnectionUrl+"'",
-      "  };",
-      "</script>",
-      "",
-      "<script type='text/javascript' src='js/"+jsFileName+"'></script>",
-      "<script type='text/javascript'>",
-      "  "+(meteor.disconnectByDefault? 'Meteor.disconnect();': ''),
-      "  UI.body.INSTANTIATED = true;",
-      "",
-      "  if (typeof Package === 'undefined' ||",
-      "      ! Package.webapp ||",
-      "      ! Package.webapp.WebApp ||",
-      "      ! Package.webapp.WebApp._isCssLoaded())",
-      "    document.location.reload(); ",
-      "",
-      "  Meteor.startup(function () {",
-      "    UI.body.INSTANTIATED = true;",
-      "    UI.DomRange.insert(UI.render(UI.body).dom, document.querySelector('#"+conf.app.cordovaDomContainerId+"') );",
-      "  });",
-      "</script>",
-    ].join('\n\t'));
+      var $patch =$([
+        "<link rel='stylesheet' type='text/css' href='css/"+cssFileName+"' />",
+        "<script type='text/javascript'>",
+        "  __meteor_runtime_config__ = {",
+        "    'meteorRelease':'0.8.2',",
+        "    'ROOT_URL':'"+meteor.rootUrl+"',",
+        "    'ROOT_URL_PATH_PREFIX':'"+meteor.rootUrlPathPrefix+"',",
+        "    'DDP_DEFAULT_CONNECTION_URL':'"+meteor.ddpDefaultConnectionUrl+"'",
+        "  };",
+        "</script>",
+        "",
+        "<script type='text/javascript' src='js/"+jsFileName+"'></script>",
+        "<script type='text/javascript'>",
+        "  "+(meteor.disconnectByDefault? 'Meteor.disconnect();': ''),
+        "  UI.body.INSTANTIATED = true;",
+        "",
+        "  if (typeof Package === 'undefined' ||",
+        "      ! Package.webapp ||",
+        "      ! Package.webapp.WebApp ||",
+        "      ! Package.webapp.WebApp._isCssLoaded())",
+        "    document.location.reload(); ",
+        "",
+        "  Meteor.startup(function () {",
+        "    UI.body.INSTANTIATED = true;",
+        "    UI.DomRange.insert(UI.render(UI.body).dom, document.querySelector('#"+conf.app.cordovaDomContainerId+"') );",
+        "  });",
+        "</script>",
+      ].join('\n\t'));
 
-    $indexHtml('head').append($patch);
+      $indexHtml('head').append($patch);
 
-    if(conf.app.createCordovaDomContainer) {
-      $indexHtml('body').prepend("<div id='"+conf.app.cordovaDomContainerId+"'></div>");
-    }
+      if(conf.app.createCordovaDomContainer) {
+        $indexHtml('body').prepend("<div id='"+conf.app.cordovaDomContainerId+"'></div>");
+      }
 
-    grunt.file.write(fileToPatch, $indexHtml.html());
+      grunt.file.write(fileToPatch, $indexHtml.html());
+    });
   });
 
   grunt.registerTask('init', function() {

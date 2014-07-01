@@ -4,12 +4,13 @@ This is a set of ad-hoc grunt tasks that lets you insert a meteor app inside
 a apache cordova one.
 
 #### _NOTICE:_
-_This experiment is just a bunch of grunt task I use to bundle client-only
+_This experiment is just a bunch hacks in the form of grunt tasks,
+that I use to bundle client-only
 meteor apps. I used them to both insert these meteor apps in cordova and
 jekyll projects. This repository only has the phonegap part, if someone is
 interested, I can add the jekyll one._
 
-_This haven't been tested in an online context!_
+_This haven't been tested neyond my use case, and isn't reliable!_
 
 
 #### Getting started
@@ -102,10 +103,11 @@ Inside the grunt file you'll find a `conf` object, with the following properties
 - `folders.meteorProject`: The folder to hold the meteor project. Default: `meteor`.
 
 #### Notes
-I've used Firefox OS because it's faster and easier to debug. If you want to target other platforms add them to
-the [`init` task](https://github.com/merunga/cordova-meteor-mashup/blob/master/Gruntfile.js#L35), and
-add the [platform `index.html` file](https://github.com/merunga/cordova-meteor-mashup/blob/master/Gruntfile.js#L35)
-to the list of files to be patched.
+I've used Firefox OS because it's faster and easier to debug. If you want to target
+other platforms add them to the
+[`init` task](https://github.com/merunga/cordova-meteor-mashup/blob/master/Gruntfile.js#L35),
+and add the platform `index.html` file to the 
+[list of files to be patched](https://github.com/merunga/cordova-meteor-mashup/blob/master/Gruntfile.js#L125).
 
 #### License
 MIT
