@@ -85,7 +85,7 @@ There are 2 main grunt tasks:
     Template.__body__.__isInstantiated = true;
     var range = Blaze.render(Template.__body__);
     Template.__body__.__view = range.view;
-    range.attach(document.querySelector('#meteor-container'));
+    range.attach(document.querySelector('#meteor-app-container'));
   });
 </script>
 ```
