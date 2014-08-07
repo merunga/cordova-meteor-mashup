@@ -58,18 +58,34 @@ There are 2 main grunt tasks:
 <script type="text/javascript" src="js/meteor-bundled-js-file.js"></script>
 <script type="text/javascript">
   Meteor.disconnect(); // stop trying to reach the server
-  UI.body.INSTANTIATED = true; // "trick" meteor not to inject the main template in the body
+//  UI.body.INSTANTIATED = true; // "trick" meteor not to inject the main template in the body
 
+//  if (typeof Package === 'undefined' ||
+//      ! Package.webapp ||
+//      ! Package.webapp.WebApp ||
+//      ! Package.webapp.WebApp._isCssLoaded())
+//    document.location.reload(); 
+
+//  Meteor.startup(function () {
+    // https://github.com/meteor/meteor/blob/master/packages/templating/plugin/html_scanner.js#L178
+//    UI.body.INSTANTIATED = true;
+//    UI.DomRange.insert(UI.render(UI.body).dom, document.querySelector('#meteor-app-container') );
+//  });
+  
+  Template.__body__.__isInstantiated = true;
   if (typeof Package === 'undefined' ||
       ! Package.webapp ||
       ! Package.webapp.WebApp ||
       ! Package.webapp.WebApp._isCssLoaded())
-    document.location.reload(); 
-
+    document.location.reload();
+  
+  // updated to 0.8.3
   Meteor.startup(function () {
-    // https://github.com/meteor/meteor/blob/master/packages/templating/plugin/html_scanner.js#L178
-    UI.body.INSTANTIATED = true;
-    UI.DomRange.insert(UI.render(UI.body).dom, document.querySelector('#meteor-app-container') );
+    // https://github.com/meteor/meteor/blob/3ad5ff6c9091aae3624e3e4ced2d0fc6d0d8e067/packages/templating/templating.js#L203
+    Template.__body__.__isInstantiated = true;
+    var range = Blaze.render(Template.__body__);
+    Template.__body__.__view = range.view;
+    range.attach(document.querySelector('#meteor-container'));
   });
 </script>
 ```
